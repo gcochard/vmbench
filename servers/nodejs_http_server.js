@@ -14,9 +14,9 @@ function handle(request, response) {
     }
     if (!responses[msize]) {
 	// for Node.js v4
-	responses[msize] = new Buffer(msize).fill("X");
+	// responses[msize] = new Buffer(msize).fill("X");
 	// for Node.js v6
-	// responses[msize] = Buffer.alloc(msize, "X");
+	responses[msize] = Buffer.alloc(msize, "X");
     }
     response.end(responses[msize]);
 }

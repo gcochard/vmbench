@@ -22,6 +22,10 @@ RUN pip3 install vex
 RUN vex --python=python3.5 -m bench pip install -U pip
 RUN mkdir -p /var/lib/cache/pip
 
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+RUN nvm install v6
+RUN nvm alias default v6
+
 ADD servers /usr/src/servers
 RUN cd /usr/src/servers && go build goecho.go && \
         go get github.com/golang/groupcache/lru && go build gohttp.go
